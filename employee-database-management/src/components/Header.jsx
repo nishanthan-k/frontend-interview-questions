@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
+import { FaMoon, FaRegMoon } from "react-icons/fa";
 
 const Header = () => {
   const [theme, setTheme] = useState("");
@@ -15,15 +15,23 @@ const Header = () => {
     const htmlElement = document.querySelector("html");
     const themeAttribute = htmlElement.getAttribute("theme");
     const newTheme = themeAttribute === "dark" ? "light" : "dark";
-    htmlElement.setAttribute("thme", newTheme);
+    htmlElement.setAttribute("theme", newTheme);
   };
 
   return (
-    <header className="flex justify-between">
-      <h2 className="text-2xl font-bold">Employee Database Management</h2>
-      <div className="flex gap-4 justify-center items-center">
-        <button className="bg-buttonColor rounded-lg px-2 py-1 text-sm">Add Employee</button>
-        {theme === "dark" ? <MdOutlineDarkMode className="text-2xl" onClick={() => themeHandler()} /> : <MdDarkMode className="text-2xl" onClick={() => themeHandler()} />}
+    <header className="flex flex-col md:flex-row justify-between gap-4 md:gap-0">
+      <h2 className="text-xl md:text-2xl font-bold">
+        Employee Database Management
+      </h2>
+      <div className="flex gap-4 justify-center items-center self-end ">
+        <button className="bg-buttonColor rounded-lg px-2 py-1 text-sm">
+          Add Employee
+        </button>
+        {theme === "dark" ? (
+          <FaMoon className="text-2xl" onClick={() => themeHandler()} />
+        ) : (
+          <FaRegMoon className="text-2xl" onClick={() => themeHandler()} />
+        )}
       </div>
     </header>
   );
