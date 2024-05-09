@@ -1,21 +1,14 @@
-import { useState } from "react";
-import empDetail from "../assets/empData.json";
+import { useContext, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import EmployeeInfo from "./EmployeeInfo";
+import { EmployeeContext } from "../context/EmployeeContext";
 
 const EmployeeList = () => {
-  const [empData, setEmpData] = useState(empDetail);
+  const { empData, removeEmp } = useContext(EmployeeContext);
   const [selectedEmp, setSelectedEmp] = useState({});
 
   const setEmployee = (emp) => {
     setSelectedEmp(emp);
-  };
-
-  console.log(selectedEmp);
-
-  const removeEmp = (empId) => {
-    const updatedEmpData = empData.filter((e) => e.empId !== empId);
-    setEmpData(updatedEmpData);
   };
 
   const empBar = (emp) => {
