@@ -13,4 +13,12 @@
     --bgColor: #ffffff;
     --buttonColor: #48a8e3;
   }
+
+  .height {
+    height: 450px;
+  }
+
+  .imgBorderRadius {
+    border-radius: 50%;
+  }
 }

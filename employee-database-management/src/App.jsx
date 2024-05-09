@@ -6,7 +6,7 @@ function App() {
     <div className="p-4 bg-bgColor text-textColor h-dvh w-screen">
       <Header />
       <section className="w-full mt-5">
-        <div className="w-1/4">
+        <div className="w-full">
           <EmployeeList />
         </div>
       </section>

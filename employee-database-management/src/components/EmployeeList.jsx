@@ -1,9 +1,17 @@
 import { useState } from "react";
 import empDetail from "../assets/empData.json";
 import { RxCross2 } from "react-icons/rx";
+import EmployeeInfo from "./EmployeeInfo";
 
 const EmployeeList = () => {
   const [empData, setEmpData] = useState(empDetail);
+  const [selectedEmp, setSelectedEmp] = useState({});
+
+  const setEmployee = (emp) => {
+    setSelectedEmp(emp);
+  };
+
+  console.log(selectedEmp);
 
   const removeEmp = (empId) => {
     const updatedEmpData = empData.filter((e) => e.empId !== empId);
@@ -12,10 +20,7 @@ const EmployeeList = () => {
 
   const empBar = (emp) => {
     return (
-      <div
-        key={emp.empId}
-        className="border py-2 border-gray-300 mb-4 flex justify-between px-8 items-center"
-      >
+      <div key={emp.empId} className="border py-2 bg-slate-500 border-gray-300 mb-4 hover:cursor-pointer hover:bg-slate-400 flex justify-between px-8 items-center" onClick={() => setEmployee(emp)}>
         <h2 className="self-center">{emp.name}</h2>
         <RxCross2 className="text-xl" onClick={() => removeEmp(emp.empId)} />
       </div>
@@ -23,9 +28,10 @@ const EmployeeList = () => {
   };
 
   return (
-    <section className="max-h-2/3 border border-red-800 overflow-y-scroll">
-      {empData.map((emp) => empBar(emp))}
-    </section>
+    <div className="flex w-full">
+      <section className="w-1/4 height p-2 border bg-gray-200 border-gray-300 overflow-y-scroll">{empData.map((emp) => empBar(emp))}</section>
+      <EmployeeInfo selectedEmp={selectedEmp} />
+    </div>
   );
 };
 
