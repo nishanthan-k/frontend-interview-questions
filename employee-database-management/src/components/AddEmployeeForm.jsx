@@ -14,8 +14,11 @@ const AddEmployeeForm = ({ addEmpHandler }) => {
   });
 
   const inputHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(formData);
+    if (e.target.name === "profileImg") {
+      setFormData({ ...formData, [e.target.name]: URL.createObjectURL(e.target.files[0]) });
+    } else {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
   };
 
   const submitHandler = (e) => {
@@ -39,7 +42,7 @@ const AddEmployeeForm = ({ addEmpHandler }) => {
           <label htmlFor="userProfile" className="text-white">
             Profile Image:
           </label>
-          <input className="ml-10" type="file" accept="image/*" onChange={inputHandler} value={formData.profileImg} name="profileImg" id="profileImg" />
+          <input className="ml-10" type="file" onChange={inputHandler} name="profileImg" />
         </fieldset>
 
         <button type="submit" className="p-2 bg-sky-500 hover:bg-sky-600" onClick={(e) => submitHandler(e)}>

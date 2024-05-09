@@ -15,7 +15,6 @@ const Header = () => {
   const addEmpHandler = () => setAddEmployee(!addEmployee);
 
   const themeHandler = () => {
-    console.log("themeHandler");
     const htmlElement = document.querySelector("html");
     const themeAttribute = htmlElement.getAttribute("theme");
     const newTheme = themeAttribute === "dark" ? "light" : "dark";
